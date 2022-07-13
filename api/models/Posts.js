@@ -20,4 +20,4 @@ const PostSchema = new mongoose.Schema({
 
 // Export the model using the schema function above
 
-export default mongoose.model('Posts', PostSchema)
+export default mongoose.model('Post', PostSchema)
