@@ -26,6 +26,14 @@ mongoose.connection.on('Disconnected', () => {
   console.log('Disconnected from MongoDB!')
 })
 
+// --------------------------------------------------------
+// Note
+// We create Models that connect directly to MongoDB cluster. These models are then imported into the controllers and inside the controller file for each respective CRUD feature on the site that needs to store data. (Users, Posts etc)
+
+// After CRUD operations is setup in controller, each one is imported into its respective routes file, and then the routes file is imported into index.js for the middleware routes
+
+// --------------------------------------------------------
+
 // This is where the routing middleware goes
 app.use('/api/posts', postRoutes)
 
