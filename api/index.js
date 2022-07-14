@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import cookieParser from 'cookie-parser'
 import postRoutes from './routes/Post.js'
+import bodyParser from 'body-parser'
 
 // Setup server and dotenv
 // Setup express server
@@ -33,6 +34,9 @@ mongoose.connection.on('Disconnected', () => {
 // After CRUD operations is setup in controller, each one is imported into its respective routes file, and then the routes file is imported into index.js for the middleware routes
 
 // --------------------------------------------------------
+
+// BODYPARSER IS USED TO READ THE POST REQ.BODY - OTHERWISE, RETURNS EMPTY SET OF DATA.
+app.use(bodyParser.json())
 
 // This is where the routing middleware goes
 app.use('/api/posts', postRoutes)
