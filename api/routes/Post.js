@@ -1,23 +1,24 @@
 import express from 'express'
+import {
+  createPost,
+  updatePost,
+  deletePost,
+  getPosts,
+  getPostByCategory,
+} from '../controllers/post.js'
 
 const router = express.Router()
 
 // We don't need to put the /user
 
-router.get('/', (req, res) => {
-  res.send({ data: 'Here is your data from posts route' })
-})
+router.get('/', getPosts)
 
-router.post('/', (req, res) => {
-  res.send({ data: 'Here is your data' })
-})
+router.get('/', getPostByCategory)
 
-router.put('/', (req, res) => {
-  res.send({ data: 'Here is your data' })
-})
+router.post('/', createPost)
 
-router.delete('/', (req, res) => {
-  res.send({ data: 'Here is your data' })
-})
+router.put('/', updatePost)
+
+router.delete('/', deletePost)
 
 export default router

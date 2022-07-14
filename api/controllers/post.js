@@ -1,4 +1,4 @@
-import Post from '../models/Posts'
+import Post from '../models/Posts.js'
 
 export const createPost = async (req, res) => {
   const newPost = new Post(req.body)
@@ -9,6 +9,7 @@ export const createPost = async (req, res) => {
   try {
     const savedPost = await newPost.save()
     res.status(200).json(savedPost)
+    console.log('New post created!')
   } catch (err) {
     throw err
   }

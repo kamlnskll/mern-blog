@@ -7,14 +7,14 @@ const PostSchema = new mongoose.Schema({
   },
   title: {
     type: String,
-    required: true,
+    // required: true,
   },
   shortDesc: {
     string: String,
   },
   body: {
     type: String,
-    required: true,
+    // required: true,
   },
 })
 
