@@ -4,6 +4,7 @@ import mongoose from 'mongoose'
 import cookieParser from 'cookie-parser'
 import postRoutes from './routes/Post.js'
 import bodyParser from 'body-parser'
+import cors from 'cors'
 
 // Setup server and dotenv
 // Setup express server
@@ -11,6 +12,7 @@ import bodyParser from 'body-parser'
 const app = express()
 dotenv.config()
 const port = 8080
+app.use(cors())
 
 // Now connect to MONGODB using mongoose as well as a disconnection message.
 
