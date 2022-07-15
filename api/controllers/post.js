@@ -33,10 +33,9 @@ export const updatePost = async (req, res) => {
 
 export const deletePost = async (req, res) => {
   try {
-    await Post.findByIdAndDelete(
-      req.params.id,
+    await Post.deleteOne(
       {
-        $set: req.body,
+        _id: req.params.id,
       },
       { new: true }
     )
@@ -47,6 +46,15 @@ export const deletePost = async (req, res) => {
 }
 
 export const getPosts = async (req, res) => {
+  try {
+    const post = await Post.find()
+    res.status(200).json(post)
+  } catch (err) {
+    throw err
+  }
+}
+
+export const getPostByCategory = async (req, res) => {
   try {
     const post = await Post.findById(
       req.params.id,
@@ -60,5 +68,3 @@ export const getPosts = async (req, res) => {
     throw err
   }
 }
-
-export const getPostByCategory = async (req, res) => {}

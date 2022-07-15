@@ -13,12 +13,12 @@ const router = express.Router()
 
 router.get('/', getPosts)
 
-router.get('/', getPostByCategory)
+router.get('/:postCategory', getPostByCategory)
 
 router.post('/', createPost)
 
-router.put('/', updatePost)
+router.put('/:id', updatePost)
 
-router.delete('/', deletePost)
+router.delete('/:id', deletePost)
 
 export default router
