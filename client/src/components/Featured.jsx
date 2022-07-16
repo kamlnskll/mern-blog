@@ -1,10 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react'
-import { fetchPosts } from '../services/getPosts'
 
 const Featured = () => {
-  useEffect(() => fetchPosts, [])
-
   return (
     <div className='p-24'>
       <div className='flex'>
