@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { fetchPosts } from '../services/getPosts'
 
 const Featured = () => {
-  useEffect(() => fetchPosts(), [])
+  useEffect(() => fetchPosts, [])
 
   return (
     <div className='p-24'>
