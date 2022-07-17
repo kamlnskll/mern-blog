@@ -1,10 +1,14 @@
 import Home from './pages/Home'
+import { BrowserRouter, Router, Routes, Route } from 'react-router-dom'
+import Post from './pages/Post.jsx'
 
 function App() {
   return (
-    <div>
-      <Home />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

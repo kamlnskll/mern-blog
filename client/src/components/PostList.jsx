@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const PostList = () => {
   useEffect(() => {
@@ -7,6 +8,7 @@ const PostList = () => {
   }, [])
 
   const [posts, setPosts] = useState(null)
+  const [id, setId] = useState(null)
 
   async function getPosts() {
     await axios
@@ -30,13 +32,15 @@ const PostList = () => {
               key={index}
             >
               <figure>
-                <img alt='Shoes' src={post.img} />
+                <img alt='Shoes' src={post.img} className='' />
               </figure>
               <div class='card-body'>
                 <h2 class='card-title'>{post.title}</h2>
                 <p>{post.body}</p>
                 <div class='card-actions justify-end'>
-                  <button class='btn btn-primary'>Buy Now</button>
+                  <Link to={`/posts/${post._id}`}>
+                    <button class='btn btn-primary'>Read Article</button>
+                  </Link>
                 </div>
               </div>
             </div>
