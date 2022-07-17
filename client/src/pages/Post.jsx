@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const Post = () => {
+const Post = ({ id, setId }) => {
   const [postData, setPostData] = useState(null)
 
   async function getPost() {
@@ -20,7 +20,7 @@ const Post = () => {
     getPost()
   }, [])
 
-  return <div>${postData.body}</div>
+  return <div>Here is the post page</div>
 }
 
 export default Post
