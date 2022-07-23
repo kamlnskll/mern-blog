@@ -13,7 +13,7 @@ const router = express.Router()
 
 router.get('/', getPosts)
 
-router.get('/:postId', getPostById)
+router.get('/:id', getPostById)
 
 router.post('/', createPost)
 

@@ -6,7 +6,6 @@ import { useParams } from 'react-router-dom'
 const PostList = () => {
   useEffect(() => {
     getPosts()
-    console.log()
   }, [])
 
   const [posts, setPosts] = useState(null)

@@ -56,13 +56,7 @@ export const getPosts = async (req, res) => {
 
 export const getPostById = async (req, res) => {
   try {
-    const post = await Post.findById(
-      req.params.postId,
-      {
-        $set: req.body,
-      },
-      { new: true }
-    )
+    const post = await Post.findById(req.params.id)
     res.status(200).json(post)
   } catch (err) {
     throw err
