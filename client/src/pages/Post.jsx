@@ -24,7 +24,18 @@ const Post = () => {
     console.log(id)
   }, [])
 
-  return <div>This post ID is {id} </div>
+  return (
+    <div>
+      <img src={postData.img} alt='Post Image' className='p-12 mx-auto' />
+      <div className='w-2/3 text-center mx-auto'>
+        <h1 className='pt-16 text-4xl font-bold'>{postData.title}</h1>
+        <h2 className='pt-12 text-lg font-semibold'>
+          Written by: "AUTHOR NAME HERE EVENTUALLY"
+        </h2>
+        <p className='pt-16'>{postData.body}</p>
+      </div>
+    </div>
+  )
 }
 
 export default Post
