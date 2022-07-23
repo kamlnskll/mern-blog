@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { useParams } from 'react-router-dom'
 
 const Post = () => {
-  const [postData, setPostData] = useState('')
-  const [id, setId] = useState('')
+  let { postId } = useParams()
 
-  async function getPost() {
+  const [postData, setPostData] = useState('')
+
+  async function getPost(postId) {
     await axios
-      .get(`http://localhost:8080/api/posts/`)
+      .get(`http://localhost:8080/api/posts/${postId}`)
       .then((res) => {
         console.log(res.data)
         setPostData(res.data)
-        setId(postData._id)
-        console.log(id)
       })
       .catch((err) => {
         console.log(err)
@@ -20,8 +20,9 @@ const Post = () => {
   }
 
   useEffect(() => {
-    getPost(id)
-    console.log(id)
+    getPost(postId)
+    console.log(postId)
+    console.log(postData)
   }, [])
 
   return <div>Here is the post page for post ID: ${} </div>

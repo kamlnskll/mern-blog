@@ -54,10 +54,10 @@ export const getPosts = async (req, res) => {
   }
 }
 
-export const getPostByCategory = async (req, res) => {
+export const getPostById = async (req, res) => {
   try {
     const post = await Post.findById(
-      req.params.id,
+      req.params.postId,
       {
         $set: req.body,
       },

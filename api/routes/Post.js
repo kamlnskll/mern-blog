@@ -4,7 +4,7 @@ import {
   updatePost,
   deletePost,
   getPosts,
-  getPostByCategory,
+  getPostById,
 } from '../controllers/post.js'
 
 const router = express.Router()
@@ -13,7 +13,7 @@ const router = express.Router()
 
 router.get('/', getPosts)
 
-router.get('/:postCategory', getPostByCategory)
+router.get('/:postId', getPostById)
 
 router.post('/', createPost)
 

@@ -1,18 +1,19 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 const PostList = () => {
   useEffect(() => {
     getPosts()
+    console.log()
   }, [])
 
   const [posts, setPosts] = useState(null)
-  const [id, setId] = useState(null)
 
   async function getPosts() {
     await axios
-      .get('http://localhost:8080/api/posts')
+      .get(`http://localhost:8080/api/posts/`)
       .then((res) => {
         console.log(res.data)
         setPosts(res.data)
@@ -28,18 +29,18 @@ const PostList = () => {
         posts.map((post, index) => {
           return (
             <div
-              class='card card-compact w-96 bg-base-100 shadow-xl m-6'
+              className='card card-compact w-96 bg-base-100 shadow-xl m-6'
               key={index}
             >
               <figure>
                 <img alt='Shoes' src={post.img} className='' />
               </figure>
-              <div class='card-body'>
-                <h2 class='card-title'>{post.title}</h2>
+              <div className='card-body'>
+                <h2 className='card-title'>{post.title}</h2>
                 <p>{post.body}</p>
-                <div class='card-actions justify-end'>
+                <div className='card-actions justify-end'>
                   <Link to={`/posts/${post._id}`}>
-                    <button class='btn btn-primary'>Read Article</button>
+                    <button className='btn btn-primary'>Read Article</button>
                   </Link>
                 </div>
               </div>
