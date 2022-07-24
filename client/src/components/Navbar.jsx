@@ -11,6 +11,12 @@ const Navbar = () => {
           <Link className='btn btn-ghost normal-case text-xl' to={`/`}>
             Home
           </Link>
+          <Link className='btn btn-ghost normal-case text-xl' to={`/login`}>
+            Login
+          </Link>
+          <Link className='btn btn-ghost normal-case text-xl' to={`/register`}>
+            Register
+          </Link>
 
           <Link className='btn btn-ghost normal-case text-xl' to={`/about`}>
             About
