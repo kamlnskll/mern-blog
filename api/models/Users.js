@@ -1,7 +1,5 @@
 import mongoose from 'mongoose'
 
-import { Schema } from 'mongoose'
-
 const UserSchema = new mongoose.Schema(
   {
     firstName: {
@@ -23,6 +21,11 @@ const UserSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
+    },
+
+    isAdmin: {
+      type: Boolean,
+      default: false,
     },
   },
   {

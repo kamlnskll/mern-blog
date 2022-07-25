@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser'
 import postRoutes from './routes/Post.js'
 import bodyParser from 'body-parser'
 import cors from 'cors'
+import userRoutes from './routes/User.js'
 
 // Setup server and dotenv
 // Setup express server
@@ -42,6 +43,7 @@ app.use(bodyParser.json())
 
 // This is where the routing middleware goes
 app.use('/api/posts', postRoutes)
+app.use('/api/users', userRoutes)
 
 // app.use('/api/posts', postRoutes)
 // app.use('/api/posts', postRoutes)

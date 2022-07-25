@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
-import bcrypt from 'bcryptjs'
-import Users from '../models/Users'
+import bcrypt from 'bcrypt'
+import Users from '../models/Users.js'
 import asyncHandler from 'express-async-handler'
 
 // Register a new user
@@ -26,7 +26,7 @@ export const registerUser = asyncHandler(async (req, res) => {
   const hashedPassword = await bcrypt.hash(password, salt)
 
   // Then we create user with the Mongoose Model
-  const user = await User.create({
+  const user = await Users.create({
     firstName,
     lastName,
     email,
