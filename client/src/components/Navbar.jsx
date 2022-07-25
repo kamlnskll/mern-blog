@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 const Navbar = () => {
+  const user = false
+
   return (
     <div>
       <div class='navbar bg-primary text-primary-content flex justify-between p-6 mb-16'>
@@ -8,19 +10,28 @@ const Navbar = () => {
           <h1 className='text-3xl font-bold'>Bloggers</h1>
         </div>
         <div className='flex'>
-          <Link className='btn btn-ghost normal-case text-xl' to={`/login`}>
-            Login
-          </Link>
-          <Link className='btn btn-ghost normal-case text-xl' to={`/register`}>
-            Register
-          </Link>
-
-          <Link
-            className='btn btn-ghost normal-case text-xl btn-warning'
-            to={`/logout`}
-          >
-            Logout
-          </Link>
+          {!user && (
+            <>
+              {' '}
+              <Link className='btn btn-ghost normal-case text-xl' to={`/login`}>
+                Login
+              </Link>
+              <Link
+                className='btn btn-ghost normal-case text-xl'
+                to={`/register`}
+              >
+                Register
+              </Link>{' '}
+            </>
+          )}
+          {user && (
+            <Link
+              className='btn btn-ghost normal-case text-xl btn-warning'
+              to={`/logout`}
+            >
+              Logout
+            </Link>
+          )}
 
           <Link className='btn btn-ghost normal-case text-xl' to={`/`}>
             Home
