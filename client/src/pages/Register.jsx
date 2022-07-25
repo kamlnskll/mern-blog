@@ -1,7 +1,29 @@
+import axios from 'axios'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 const Register = () => {
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleRegister = () => {
+    axios
+      .post(`http://localhost:8080/api/users/register`, {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+      })
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  }
+
   return (
     <div>
       <div className='mx-auto w-1/3'>
@@ -13,6 +35,7 @@ const Register = () => {
               placeholder='Enter your email'
               class='input input-bordered'
               required
+              onChange={(e) => setEmail(e.target.value)}
             />
           </label>
         </div>
@@ -25,6 +48,7 @@ const Register = () => {
                 placeholder='Enter your email'
                 class='input input-bordered'
                 required
+                onChange={(e) => setFirstName(e.target.value)}
               />
             </label>
           </div>
@@ -36,6 +60,7 @@ const Register = () => {
                 placeholder='Enter your email'
                 class='input input-bordered'
                 required
+                onChange={(e) => setLastName(e.target.value)}
               />
             </label>
           </div>
@@ -48,6 +73,7 @@ const Register = () => {
               class='input input-bordered'
               placeholder='Enter your password'
               required
+              onChange={(e) => setPassword(e.target.value)}
             />
           </label>
 
@@ -63,11 +89,12 @@ const Register = () => {
             </label>
 
             <div className='mt-12 w-48 mx-auto flex gap-6'>
-              <Link to='/register'>
-                <button class='btn btn-warning font-bold hover:bg-orange-400'>
-                  Register
-                </button>
-              </Link>
+              <button
+                class='btn btn-warning font-bold hover:bg-orange-400'
+                onClick={handleRegister}
+              >
+                Register
+              </button>
             </div>
           </div>
         </div>
