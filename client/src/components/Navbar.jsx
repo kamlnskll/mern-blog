@@ -8,14 +8,22 @@ const Navbar = () => {
           <h1 className='text-3xl font-bold'>Bloggers</h1>
         </div>
         <div className='flex'>
-          <Link className='btn btn-ghost normal-case text-xl' to={`/`}>
-            Home
-          </Link>
           <Link className='btn btn-ghost normal-case text-xl' to={`/login`}>
             Login
           </Link>
           <Link className='btn btn-ghost normal-case text-xl' to={`/register`}>
             Register
+          </Link>
+
+          <Link
+            className='btn btn-ghost normal-case text-xl btn-warning'
+            to={`/logout`}
+          >
+            Logout
+          </Link>
+
+          <Link className='btn btn-ghost normal-case text-xl' to={`/`}>
+            Home
           </Link>
 
           <Link className='btn btn-ghost normal-case text-xl' to={`/about`}>

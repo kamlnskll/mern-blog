@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <div>
-      <div className='navbar bg-primary text-primary-content flex justify-between p-5 mt-36'>
+      <div className='navbar bg-primary text-primary-content flex justify-between p-5 mt-8'>
         Footer
       </div>
     </div>

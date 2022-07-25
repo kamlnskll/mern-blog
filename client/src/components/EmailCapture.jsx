@@ -1,6 +1,13 @@
 import React from 'react'
+import { useState } from 'react'
 
 const EmailCapture = () => {
+  const [email, setEmail] = useState('')
+
+  const handleEmailSubmit = () => {
+    console.log(email)
+  }
+
   return (
     <div className='bg-primary text-white text-center py-16'>
       <h1 className='text-xl mb-8 font-semibold'>
@@ -11,9 +18,14 @@ const EmailCapture = () => {
           <input
             type='text'
             placeholder='Enter your email here!'
-            class='input input-bordered w-full max-w-xl'
+            class='input input-bordered w-full max-w-xl text-black'
+            onChange={(e) => setEmail(e.target.value)}
           />
-          <button className='btn btn-warning mt-4 font-bold border-2 hover:bg-yellow-600'>
+          <button
+            type='submit'
+            onClick={handleEmailSubmit}
+            className='btn btn-warning mt-4 font-bold border-2 hover:bg-yellow-600'
+          >
             SUBMIT EMAIL
           </button>
         </div>
