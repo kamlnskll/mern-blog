@@ -68,7 +68,7 @@ export const loginUser = asyncHandler(async (req, res) => {
     res.status(400)
     throw new Error('No user found with those credentials')
   }
-  res.json({ message: 'Logged in a user' })
+  // res.json({ message: 'Logged in a user' })
 })
 
 // Fetch user data once authenticated
@@ -82,6 +82,23 @@ export const getUserData = asyncHandler(async (req, res) => {
 
 const generateJWT = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: '14d',
+    expiresIn: '2m',
   })
 }
+
+// export function authenticateJWTToken(req, res, next) {
+//   // Grab the authorization section of the header request
+
+//   const authHeader = req.headers['authorization']
+
+//   // BEARER token - we split at the space and turn the function into an array which grabs the '[1]' place item aka the bearer token
+//   // If we have Authheader, bring back the token or undefined
+//   const token = authHeader && authHeader.split(' ')[1]
+//   if (token == null) return res.sendStatus(401)
+
+//   jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+//     if (err) return res.sendStatus(403)
+//     req.user = user
+//     next()
+//   })
+// }
