@@ -18,6 +18,10 @@ const Register = () => {
       })
       .then(function (response) {
         console.log(response)
+        const token = response.data.token
+        console.log(token)
+          // Save user json data to localStorage
+          localStorage.setItem('token', JSON.stringify(token))
       })
       .catch(function (error) {
         console.log(error)
