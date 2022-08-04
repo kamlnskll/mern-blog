@@ -5,7 +5,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div class='navbar bg-primary text-primary-content flex justify-between p-6 mb-16'>
+      <div class='navbar bg-primary text-primary-content flex justify-between p-6 mb-24'>
         <div className='flex'>
           <h1 className='text-3xl font-bold'>Bloggers</h1>
         </div>

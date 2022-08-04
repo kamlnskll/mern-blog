@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import Users from '../models/Users.js'
 import asyncHandler from 'express-async-handler'
+import { generateAccessToken } from '../utils/authMiddleware.js'
 
 // Register a new user
 // Post to /api/users
@@ -34,12 +35,15 @@ export const registerUser = asyncHandler(async (req, res) => {
   })
 
   if (user) {
+   const token = generateAccessToken(user._id)
+
     res.status(201).json({
       _id: user._id,
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
-      token: generateJWT(user._id),
+      token
+      
     })
   } else {
     res.status(400)
@@ -58,11 +62,13 @@ export const loginUser = asyncHandler(async (req, res) => {
   // Check if user exists in database
   const user = await Users.findOne({ email })
   if (user && (await bcrypt.compare(password, user.password))) {
+   const token = generateAccessToken(user._id)
+
     res.json({
       _id: user._id,
       firstName: user.firstName,
       lastName: user.lastName,
-      token: generateJWT(user._id),
+      token
     })
   } else {
     res.status(400)
@@ -78,27 +84,4 @@ export const getUserData = asyncHandler(async (req, res) => {
   res.json({ message: 'Individual user data here' })
 })
 
-// Generate a Json Web Token
 
-const generateJWT = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: '2m',
-  })
-}
-
-// export function authenticateJWTToken(req, res, next) {
-//   // Grab the authorization section of the header request
-
-//   const authHeader = req.headers['authorization']
-
-//   // BEARER token - we split at the space and turn the function into an array which grabs the '[1]' place item aka the bearer token
-//   // If we have Authheader, bring back the token or undefined
-//   const token = authHeader && authHeader.split(' ')[1]
-//   if (token == null) return res.sendStatus(401)
-
-//   jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-//     if (err) return res.sendStatus(403)
-//     req.user = user
-//     next()
-//   })
-// }

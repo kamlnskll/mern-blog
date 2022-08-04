@@ -12,7 +12,7 @@ const router = express.Router()
 
 // We don't need to put the /user
 
-router.get('/', ensureToken, getPosts)
+router.get('/', getPosts)
 
 router.get('/:id', getPostById)
 
