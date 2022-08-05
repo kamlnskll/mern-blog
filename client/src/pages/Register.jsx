@@ -1,8 +1,13 @@
 import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
+
+  
+const navigate = useNavigate()
+
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -22,6 +27,9 @@ const Register = () => {
         console.log(token)
           // Save user json data to localStorage
           localStorage.setItem('token', JSON.stringify(token))
+
+          // Navigate to home page on successful login
+          navigate('/')
       })
       .catch(function (error) {
         console.log(error)
