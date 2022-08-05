@@ -17,11 +17,11 @@ const Navbar = () => {
 
 const checkUser = () => {
 
-  if(!isUser.user){
-  setUser(false)
- } else{
-  setUser(true)
- }
+//   if(!isUser.user){
+//   setUser(false)
+//  } else{
+//   setUser(true)
+//  }
 
 
   // Check local storage for user and set user flag to true
