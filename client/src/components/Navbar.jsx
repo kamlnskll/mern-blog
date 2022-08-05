@@ -1,7 +1,30 @@
-import React from 'react'
+
 import { Link } from 'react-router-dom'
+import { useLogout } from '../hooks/useLogout'
+import { useState, useEffect } from 'react'
+
 const Navbar = () => {
-  const user = false
+
+  const { logout } = useLogout()
+
+const [user, setUser] = useState(null)
+
+const checkUser = () => {
+  // Check local storage for user and set user flag to true
+  const token = localStorage.getItem('token')
+  if(token){
+console.log('Token is found, user is logged in')
+setUser(true)
+
+  } else{
+console.log('Token is not found, user not logged in')
+  } setUser(false)
+}
+
+useEffect(() => {
+  checkUser()
+},[])
+
 
   return (
     <div>
@@ -27,7 +50,7 @@ const Navbar = () => {
           {user && (
             <Link
               className='btn btn-ghost normal-case text-xl btn-warning'
-              to={`/logout`}
+              
             >
               Logout
             </Link>

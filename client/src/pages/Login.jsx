@@ -2,10 +2,12 @@ import React from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const {dispatch} = useAuthContext()
 
   const handleLogin = (e) => {
     axios
@@ -19,6 +21,11 @@ const Login = () => {
         console.log(token)
           // Save user json data to localStorage
           localStorage.setItem('token', JSON.stringify(token))
+
+          // Update AuthContext
+
+          dispatch({type: 'LOGIN', payload: token})
+
         
       })
       .catch(function (error) {
