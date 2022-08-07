@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
+import PostSearch from '../components/PostSearch'
 
 const Admin = () => {
   
@@ -30,6 +31,9 @@ const Admin = () => {
   <div className='flex w-2/3 mx-auto'>
   <h1 className='text-3xl font-bold'>Posts: ({postNumber})</h1>
   <button className='btn btn-warning ml-8'>Create New Post</button>
+  </div>
+<div className='w-2/5 mx-auto'>
+  <PostSearch />
   </div>
   
   {posts && posts.map((post, index) => { return (<div className="hover:bg-gray-50 flex mt-6 card card-side bg-base-100 shadow-xl w-2/3 mx-auto h-48">

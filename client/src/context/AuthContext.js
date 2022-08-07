@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useEffect } from "react";
 
 
 export const AuthContext = createContext()
@@ -18,6 +18,20 @@ export const AuthContextProvider = ({children}) => {
     const [state, dispatch] = useReducer(authReducer, {
         user: null
     })
+
+
+useEffect(()=> {
+// Checking the local storage to see if we have the token
+// This function lets you refresh page and stay logged in
+const token = JSON.parse(localStorage.getItem('token'))
+if(token) {
+    dispatch({type: 'LOGIN', payload: token})
+} else{
+    console.log('Please login!')
+}
+
+
+}, [])
 
     console.log('AuthContext state:', state)
 
