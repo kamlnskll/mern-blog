@@ -25,13 +25,13 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path='/' element={user ? <Home /> : <Login />} />
-        <Route path='/posts/:id' element={user ? <Post id={id} /> : <Login />} />
+        <Route path='/' element={user ? <Home /> : <Navigate to="/login" />} />
+        <Route path='/posts/:id' element={user ? <Post id={id} /> : <Navigate to="/login" />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
-        <Route path='/admin' element={user ? <Admin /> : <Login />} />
-        <Route path='/login' element={!user ? <Login /> : <Home />} />
-        <Route path='/register' element={!user ? <Register /> : <Home />} />
+        <Route path='/admin' element={user ? <Admin /> : <Navigate to="/login" />} />
+        <Route path='/login' element={!user ? <Login /> : <Navigate to="/" />} />
+        <Route path='/register' element={!user ? <Register /> : <Navigate to="/" />} />
       </Routes>
       <Footer />
     </BrowserRouter>
