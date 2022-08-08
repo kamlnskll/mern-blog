@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import PostSearch from '../components/PostSearch'
+import CreatePostModal from '../components/CreatePostModal'
 
 const Admin = () => {
   
@@ -28,15 +29,15 @@ const Admin = () => {
 
   return <div>Admin Page
 
-  <div className='flex w-2/3 mx-auto'>
+  <div className='flex w-2/3 mx-auto gap-4'>
   <h1 className='text-3xl font-bold'>Posts: ({postNumber})</h1>
-  <button className='btn btn-warning ml-8'>Create New Post</button>
+  <CreatePostModal />
   </div>
-<div className='w-2/5 mx-auto'>
+<div className='max-w-xl mx-auto'>
   <PostSearch />
   </div>
   
-  {posts && posts.map((post, index) => { return (<div className="hover:bg-gray-50 flex mt-6 card card-side bg-base-100 shadow-xl w-2/3 mx-auto h-48">
+  {posts && posts.map((post, index) => { return (<div className="hover:bg-gray-50 flex mt-6 card card-side bg-base-100 shadow-xl max-w-xl mx-auto h-48">
   <figure className='flex m-8' ><img src={post.img} className='h-32 w-32 rounded-md' alt="Movie"/></figure>
   <div class="card-body overflow-hidden" key={index}>
   <h4 className="text-sm"><span className='font-bold underline'>Post ID:</span> {post._id}</h4>
