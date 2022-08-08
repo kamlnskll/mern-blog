@@ -1,18 +1,27 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useParams } from 'react-router-dom'
+import {useAuthContext} from '../hooks/useAuthContext'
 
 const PostList = () => {
+
+  const {user} = useAuthContext()
   useEffect(() => {
-    getPosts()
-  }, [])
+    if (user){
+    getPosts()}
+  }, [user])
 
   const [posts, setPosts] = useState(null)
 
+
+
   async function getPosts() {
     await axios
-      .get(`http://localhost:8080/api/posts/`)
+      .get(`http://localhost:8080/api/posts/`, {
+        headers: {
+          'Authorization': `Bearer ${user}`
+        }
+      })
       .then((res) => {
         console.log(res.data)
         setPosts(res.data)

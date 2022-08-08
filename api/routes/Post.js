@@ -1,5 +1,4 @@
 import express from 'express'
-import { ensureToken } from '../utils/authMiddleware.js'
 import {
   createPost,
   updatePost,
@@ -8,7 +7,12 @@ import {
   getPostById,
 } from '../controllers/post.js'
 
+import { requireAuth } from '../utils/authMiddleware.js'
+
 const router = express.Router()
+
+// Initialize the auth check function middleware
+router.use(requireAuth)
 
 // We don't need to put the /user
 

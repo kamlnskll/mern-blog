@@ -2,19 +2,25 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import PostSearch from '../components/PostSearch'
 import CreatePostModal from '../components/CreatePostModal'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const Admin = () => {
+  const { user } = useAuthContext()
   
     useEffect(() => {
       getPosts()
-    }, [])
+    }, [user])
 
   const [posts, setPosts] = useState(null)
   const [postNumber, setPostNumber] = useState('')
 
   async function getPosts() {
     await axios
-      .get(`http://localhost:8080/api/posts/`)
+      .get(`http://localhost:8080/api/posts/`, {
+        headers: {
+          'Authorization': `Bearer ${user}`
+        }
+      })
       .then((res) => {
         // console.log(res.data)
         setPosts(res.data)

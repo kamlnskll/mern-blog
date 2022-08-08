@@ -1,11 +1,13 @@
 import Home from './pages/Home'
 import {
   BrowserRouter,
-  Router,
+  Navigate,
   Routes,
   Route,
   useParams,
 } from 'react-router-dom'
+
+import { useAuthContext } from './hooks/useAuthContext'
 import Post from './pages/Post.jsx'
 import Navbar from './components/Navbar'
 import Contact from './pages/Contact'
@@ -16,18 +18,20 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 
 function App() {
+
+  const { user } = useAuthContext()
   const { id } = useParams()
   return (
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/posts/:id' element={<Post id={id} />} />
+        <Route path='/' element={user ? <Home /> : <Login />} />
+        <Route path='/posts/:id' element={user ? <Post id={id} /> : <Login />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
-        <Route path='/admin' element={<Admin />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
+        <Route path='/admin' element={user ? <Admin /> : <Login />} />
+        <Route path='/login' element={!user ? <Login /> : <Home />} />
+        <Route path='/register' element={!user ? <Register /> : <Home />} />
       </Routes>
       <Footer />
     </BrowserRouter>
