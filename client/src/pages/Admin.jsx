@@ -16,7 +16,7 @@ const Admin = () => {
     await axios
       .get(`http://localhost:8080/api/posts/`)
       .then((res) => {
-        console.log(res.data)
+        // console.log(res.data)
         setPosts(res.data)
         let length = (res.data.length)
         setPostNumber(length)
