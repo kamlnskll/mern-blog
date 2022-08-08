@@ -29,7 +29,7 @@ function App() {
         <Route path='/posts/:id' element={user ? <Post id={id} /> : <Navigate to="/login" />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
-        <Route path='/admin' element={user ? <Admin /> : <Navigate to="/login" />} />
+        <Route path='/admin' element={<Admin />} />
         <Route path='/login' element={!user ? <Login /> : <Navigate to="/" />} />
         <Route path='/register' element={!user ? <Register /> : <Navigate to="/" />} />
       </Routes>
