@@ -48,7 +48,8 @@ window.alert(Object.values(contactFormDetails))
 
 
 </div>
-<button class="btn btn-primary w-48 mt-8" type="submit" onClick={submitValues}>Send message</button>
+<button class="btn btn-primary w-48 mt-8 mb-16"
+type="submit" onClick={submitValues}>Send message</button>
   </div>
 
   </div>

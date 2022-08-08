@@ -32,12 +32,12 @@ const PostList = () => {
   }
 
   return (
-    <div className='flex overflow-hidden'>
+    <div className='grid grid-rows-1 sm:grid-flow-col justify-between sm:overflow-scroll mx-6'>
       {posts &&
         posts.map((post, index) => {
           return (
             <div
-              className='card card-compact w-96 bg-base-100 shadow-xl m-6'
+              className='card card-compact sm:scale-90 sm:w-96 bg-base-100 shadow-xl my-4 sm:my-6'
               key={index}
             >
               <figure>
