@@ -57,15 +57,12 @@ useEffect(() => {
               Register
             </Link> </>)} 
             
-{isUser.user && ( <> <button className='btn btn-ghost normal-case text-xl btn-warning' onClick={logout}>Logout</button> </>)}            {/* <Link
-              className='btn btn-ghost normal-case text-xl btn-warning' to={`/logout`}>
-              Logout
-            </Link> */}
-
-
-          <Link className='btn btn-ghost normal-case text-xl' to={`/`}>
+{isUser.user && ( <> <Link className='btn btn-ghost normal-case text-xl' to={`/`}>
             Home
-          </Link>
+          </Link> <button className='btn btn-ghost normal-case text-xl btn-warning' onClick={logout}>Logout</button> </>)}          
+
+
+          
 
           <Link className='btn btn-ghost normal-case text-xl' to={`/about`}>
             About
