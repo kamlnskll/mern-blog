@@ -27,7 +27,7 @@ const Admin = () => {
       })
   }
 
-  return <div>Admin Page
+  return <div>
 
   <div className='flex w-2/3 mx-auto gap-4'>
   <h1 className='text-3xl font-bold'>Posts: ({postNumber})</h1>
