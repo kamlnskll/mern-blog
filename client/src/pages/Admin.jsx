@@ -3,6 +3,8 @@ import axios from 'axios'
 import PostSearch from '../components/PostSearch'
 import CreatePostModal from '../components/CreatePostModal'
 import { useAuthContext } from '../hooks/useAuthContext'
+import EditPostModal from '../components/EditModal'
+import deletePost from '../services/deletePost'
 
 const Admin = () => {
   const { user } = useAuthContext()
@@ -13,6 +15,7 @@ const Admin = () => {
 
   const [posts, setPosts] = useState(null)
   const [postNumber, setPostNumber] = useState('')
+  const [id, setId] = useState('')
 
   async function getPosts() {
     await axios
@@ -52,8 +55,8 @@ const Admin = () => {
     <h2 className="card-title">{post.title}</h2>
     
     <div className='flex justify-end mt-6 gap-4'>
-      <button class="btn btn-warning hover:bg-yellow-500">Edit</button>
-      <button class="btn btn-error hover:bg-red-500">Delete</button>
+      <EditPostModal/>
+      <button class="btn btn-error hover:bg-red-500" onClick={deletePost(post._id)}>Delete</button>
 
     </div>
     
