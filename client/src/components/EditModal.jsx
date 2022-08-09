@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import { useAuthContext } from '../hooks/useAuthContext'
 
-const EditPostModal = (props) => {
+const EditPostModal = () => {
 const {user} = useAuthContext()
 const [title, setTitle] = useState('')
 const [url, setURL] = useState('')
@@ -12,7 +12,7 @@ const [body, setBody] = useState('')
 
 
 const handlePostEdit = (id) => {
-axios.put(`http://localhost:8080/api/posts/${id}`, {
+axios.put(`http://localhost:8080/api/posts/`, {
   img: url,
   title: title,
   shortDesc: desc,

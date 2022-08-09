@@ -5,27 +5,7 @@ import CreatePostModal from '../components/CreatePostModal'
 import { useAuthContext } from '../hooks/useAuthContext'
 import EditPostModal from '../components/EditModal'
 
-
 const Admin = () => {
-
-
-const deletePost = (id) => {
-
-
-  axios.delete(`http://localhost:8080/api/posts/${id}`, {
-      headers: {
-          'Authorization': `Bearer ${user}`
-      } },
-
-          window.alert('Post Deleted!')
-      )
-
-}
-
-
-
-
-
 
   const { user } = useAuthContext()
   
@@ -35,8 +15,7 @@ const deletePost = (id) => {
 
   const [posts, setPosts] = useState(null)
   const [postNumber, setPostNumber] = useState('')
-  const [id, setId] = useState('')
-
+  
   async function getPosts() {
     await axios
       .get(`http://localhost:8080/api/posts/`, {
@@ -55,6 +34,24 @@ const deletePost = (id) => {
         console.log(err)
       })
   }
+
+
+  const handleDelete = async (id) => {
+
+    try {
+        await axios.delete(`http://localhost:8080/api/posts/${id}`, {
+            headers: {
+              'Authorization': `Bearer ${user}`,
+            }}, ).then((res) => console.log(res))
+    // Fetch user function here so we can refetch posts after deletion
+    getPosts()
+    
+    } catch (error) {
+        console.log(error)
+    }
+    
+    }
+
 
   return <div>
 
@@ -76,7 +73,7 @@ const deletePost = (id) => {
     
     <div className='flex justify-end mt-6 gap-4'>
       <EditPostModal/>
-      <button class="btn btn-error hover:bg-red-500" onClick={deletePost(post._id)}>Delete</button>
+      <button class="btn btn-error hover:bg-red-500" onClick={() => handleDelete(post._id)}>Delete</button>
 
     </div>
     
