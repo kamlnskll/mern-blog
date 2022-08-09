@@ -11,25 +11,7 @@ const [body, setBody] = useState('')
 // const [id, setId] = useState('')
 
 
-const handlePostEdit = (id) => {
-axios.put(`http://localhost:8080/api/posts/`, {
-  img: url,
-  title: title,
-  shortDesc: desc,
-  body: body,
-}, {
-  headers: {
-    'Authorization': `Bearer ${user}`
-  }
-}).then(function(response){
-  console.log(response.data)
-}).catch(function(error){
 
-  console.log(error)
-})
-
-
-}
 
 
   return (
@@ -50,19 +32,19 @@ axios.put(`http://localhost:8080/api/posts/`, {
   
 
   <div alt="form" className='pt-4'> 
-  <input type="text" placeholder="Post Title" class="input w-full input-bordered required" onChange={e => setTitle(e.target.value)}/>
+  <input type="text" placeholder="Post Title" class="input w-full input-bordered required" value={title} onChange={e => setTitle(e.target.value)}/>
   </div>
 
   <div alt="form" className='pt-2'> 
-  <input type="text" placeholder="Post Image URL" class="input w-full input-bordered required" onChange={e => setURL(e.target.value)}/>
+  <input type="text" placeholder="Post Image URL" class="input w-full input-bordered required" value={url} onChange={e => setURL(e.target.value)}/>
   </div>
 
   <div alt="form" className='pt-2'> 
-  <textarea class="textarea textarea-bordered w-full required" placeholder="Enter a short description of the post" onChange={e => setDesc(e.target.value)}></textarea>  
+  <textarea class="textarea textarea-bordered w-full required" placeholder="Enter a short description of the post" value={desc} onChange={e => setDesc(e.target.value)}></textarea>  
   </div>
 
 <div alt="form" className='pt-2'> 
-  <textarea class="textarea textarea-bordered w-full h-72 required" placeholder="Post body goes here" onChange={e => setBody(e.target.value)}></textarea>  
+  <textarea class="textarea textarea-bordered w-full h-72 required" placeholder="Post body goes here" value={body} onChange={e => setBody(e.target.value)}></textarea>  
   </div>
   </div>
 </div>

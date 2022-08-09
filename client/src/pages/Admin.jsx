@@ -53,6 +53,29 @@ const Admin = () => {
     }
 
 
+    // const handleEdit = (id) => {
+    //   axios.put(`http://localhost:8080/api/posts/${id}`, {
+    //     img: url,
+    //     title: title,
+    //     shortDesc: desc,
+    //     body: body,
+    //   }, {
+    //     headers: {
+    //       'Authorization': `Bearer ${user}`
+    //     }
+    //   }).then(function(response){
+    //     console.log(response.data)
+    //   }).catch(function(error){
+      
+    //     console.log(error)
+    //   })
+      
+    // }
+
+
+
+
+
   return <div>
 
   <div className='flex w-2/3 mx-auto gap-4'>
@@ -72,7 +95,7 @@ const Admin = () => {
     <h2 className="card-title">{post.title}</h2>
     
     <div className='flex justify-end mt-6 gap-4'>
-      <EditPostModal/>
+      <EditPostModal onClick={() => handleEdit(post._id)}/>
       <button class="btn btn-error hover:bg-red-500" onClick={() => handleDelete(post._id)}>Delete</button>
 
     </div>
