@@ -4,9 +4,29 @@ import PostSearch from '../components/PostSearch'
 import CreatePostModal from '../components/CreatePostModal'
 import { useAuthContext } from '../hooks/useAuthContext'
 import EditPostModal from '../components/EditModal'
-import deletePost from '../services/deletePost'
+
 
 const Admin = () => {
+
+
+const deletePost = (id) => {
+
+
+  axios.delete(`http://localhost:8080/api/posts/${id}`, {
+      headers: {
+          'Authorization': `Bearer ${user}`
+      } },
+
+          window.alert('Post Deleted!')
+      )
+
+}
+
+
+
+
+
+
   const { user } = useAuthContext()
   
     useEffect(() => {
