@@ -56,11 +56,16 @@ useEffect(() => {
               Register
             </Link> </>)} 
             
-{isUser.user && ( <> <Link className='btn btn-ghost normal-case text-xl' to={`/`}>
+{isUser.user && ( <>
+  <Link className='btn btn-warning normal-case text-xl' to={`/admin`}>
+              Admin
+            </Link>
+
+<Link className='btn btn-ghost normal-case text-xl' to={`/`}>
             Home
-          </Link> <button className='btn btn-ghost normal-case text-xl btn-warning' onClick={logout}>Logout</button> </>)}          
-
-
+          </Link> 
+          
+          <button className='btn btn-ghost normal-case text-xl btn-warning' onClick={logout}>Logout</button> </>)}          
           
 
           <Link className='btn btn-ghost normal-case text-xl' to={`/about`}>

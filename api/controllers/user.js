@@ -1,4 +1,3 @@
-import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import Users from '../models/Users.js'
 import asyncHandler from 'express-async-handler'
@@ -8,7 +7,7 @@ import { generateAccessToken } from '../utils/authMiddleware.js'
 // Post to /api/users
 
 export const registerUser = asyncHandler(async (req, res) => {
-  const { firstName, lastName, email, password } = req.body
+  const { firstName, lastName, email, password, isAdmin } = req.body
   if (!firstName || !lastName || !email || !password) {
     res.status(400)
     throw new Error('Please fill out all fields')
@@ -32,16 +31,18 @@ export const registerUser = asyncHandler(async (req, res) => {
     lastName,
     email,
     password: hashedPassword,
+    isAdmin,
   })
 
   if (user) {
-   const token = generateAccessToken(user._id)
+   const token = generateAccessToken(user._id, user.isAdmin)
 
     res.status(201).json({
       _id: user._id,
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
+      isAdmin: user.isAdmin,
       token
       
     })
@@ -62,7 +63,7 @@ export const loginUser = asyncHandler(async (req, res) => {
   // Check if user exists in database
   const user = await Users.findOne({ email })
   if (user && (await bcrypt.compare(password, user.password))) {
-   const token = generateAccessToken(user._id)
+   const token = generateAccessToken(user._id, user.isAdmin)
 
     res.json({
       _id: user._id,
@@ -83,5 +84,3 @@ export const loginUser = asyncHandler(async (req, res) => {
 export const getUserData = asyncHandler(async (req, res) => {
   res.json({ message: 'Individual user data here' })
 })
-
-

@@ -4,8 +4,8 @@ import Users from '../models/Users.js'
 
 // Generate a Json Web Token
 
-export const generateAccessToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
+export const generateAccessToken = (id, isAdmin) => {
+  return jwt.sign({ id, isAdmin  }, process.env.JWT_SECRET, {
     expiresIn: '15m',
   })
 }

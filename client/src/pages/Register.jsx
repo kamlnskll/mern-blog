@@ -5,6 +5,11 @@ import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
 
+const handleClick = () => {
+setIsAdmin(!isAdmin)
+console.log(!isAdmin)
+}
+
   
 const navigate = useNavigate()
 
@@ -12,19 +17,24 @@ const navigate = useNavigate()
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [isAdmin, setIsAdmin] = useState(false)
+ 
 
-  const handleRegister = () => {
-    axios
+const handleRegister = async () => {
+
+    await axios
       .post(`http://localhost:8080/api/users/register`, {
         firstName: firstName,
         lastName: lastName,
         email: email,
         password: password,
+      isAdmin: isAdmin
       })
       .then(function (response) {
         console.log(response)
         const token = response.data.token
-        console.log(token)
+        const admin = response.data.isAdmin
+        console.log(token, admin)
           // Save user json data to localStorage
           localStorage.setItem('token', JSON.stringify(token))
 
@@ -35,6 +45,8 @@ const navigate = useNavigate()
         console.log(error)
       })
   }
+
+
 
   return (
     <div>
@@ -100,6 +112,12 @@ const navigate = useNavigate()
               />
             </label>
 
+            <div class="form-control">
+  <label class="label cursor-pointer">
+    <span class="label-text">Check this box to create an Admin user</span> 
+    <input type="checkbox" value={isAdmin} onClick={() => handleClick()} class="checkbox" />
+  </label>
+</div>
             <div className='mt-12 w-48 mx-auto flex gap-6'>
               <button
                 class='btn btn-warning font-bold hover:bg-orange-400'
