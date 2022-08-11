@@ -3,25 +3,32 @@ import axios from 'axios'
 import { useAuthContext } from '../hooks/useAuthContext'
 
 const CreatePostModal = () => {
+
+
+
 const {user} = useAuthContext()
 const [title, setTitle] = useState('')
 const [url, setURL] = useState('')
 const [desc, setDesc] = useState('')
 const [body, setBody] = useState('')
 
+const [showModal, setShowModal] = useState(false)
 
-const PostSubmit = () => {
-axios.post('http://localhost:8080/api/posts/', {
+
+const PostSubmit = async () => {
+
+await axios.post('http://localhost:8080/api/posts/', {
   img: url,
   title: title,
   shortDesc: desc,
   body: body,
 }, {
   headers: {
-    'Authorization': `Bearer ${user}`
+    'Authorization': `Bearer ${user}`,
   }
 }).then(function(response){
-  console.log(response.data)
+  setShowModal(false)
+  console.log(response)
 }).catch(function(error){
 
   console.log(error)
@@ -33,8 +40,9 @@ axios.post('http://localhost:8080/api/posts/', {
 
   return (
     <div>
-<label for="my-modal-5" class="btn btn-warning hover:bg-orange-400 ml-8' modal-button">Create Post</label>
-<div>
+<label for="my-modal-5" class="btn btn-warning hover:bg-orange-400 ml-8' modal-button" onClick={() => setShowModal(true)}>Create Post</label>
+{showModal && ( <> <div>
+
 
 <input type="checkbox" id="my-modal-5" class="modal-toggle" />
 <div class="modal">
@@ -67,18 +75,17 @@ axios.post('http://localhost:8080/api/posts/', {
 </div>
 
     <div className="modal-action flex justify-center gap-2">
-      <label for="my-modal-5" class="btn btn-warning" onClick={PostSubmit}>Add Post</label>
+      <button for="my-modal-5" class="btn btn-warning" onClick={() => PostSubmit()}>Add Post</button>
       <label for="my-modal-5" class="btn btn-primary">Cancel</label>
     
     </div>
 
   </div>
 </div>
-</div>
+</div> </>)}
 
       
     </div>
-  )
-}
+  ) }
 
 export default CreatePostModal

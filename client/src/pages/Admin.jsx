@@ -3,24 +3,38 @@ import axios from 'axios'
 import PostSearch from '../components/PostSearch'
 import CreatePostModal from '../components/CreatePostModal'
 import { useAuthContext } from '../hooks/useAuthContext'
-import EditPostModal from '../components/EditModal'
+import { useParams, useNavigate } from 'react-router-dom'
+
 
 const Admin = () => {
 
-  const { user } = useAuthContext()
-  
-    useEffect(() => {
-      getPosts()
-    }, [user])
+  const [postId, setPostId] = useState('')
+  const [postData, setPostData] = useState({
+    img: '',
+  title: '',
+  shortDesc: '',
+  body: '',
 
+  })
   const [posts, setPosts] = useState(null)
   const [postNumber, setPostNumber] = useState('')
+  const navigate  = useNavigate()
+
+
+  const { user } = useAuthContext()
+  
+  useEffect(() => {
+    if (user){
+    getPosts()}
+  }, [user])
+
+
   
   async function getPosts() {
     await axios
       .get(`http://localhost:8080/api/posts/`, {
         headers: {
-          'Authorization': `Bearer ${user}`
+          'Authorization': `Bearer ${user}`,
         }
       })
       .then((res) => {
@@ -36,15 +50,17 @@ const Admin = () => {
   }
 
 
+
   const handleDelete = async (id) => {
 
     try {
+
+
         await axios.delete(`http://localhost:8080/api/posts/${id}`, {
             headers: {
               'Authorization': `Bearer ${user}`,
             }}, ).then((res) => console.log(res))
     // Fetch user function here so we can refetch posts after deletion
-    getPosts()
     
     } catch (error) {
         console.log(error)
@@ -53,30 +69,43 @@ const Admin = () => {
     }
 
 
-    // const handleEdit = (id) => {
-    //   axios.put(`http://localhost:8080/api/posts/${id}`, {
-    //     img: url,
-    //     title: title,
-    //     shortDesc: desc,
-    //     body: body,
-    //   }, {
-    //     headers: {
-    //       'Authorization': `Bearer ${user}`
-    //     }
-    //   }).then(function(response){
-    //     console.log(response.data)
-    //   }).catch(function(error){
-      
-    //     console.log(error)
-    //   })
-      
-    // }
+    const getPost = async (id) => {
+      try{
+      await axios.get(`http://localhost:8080/api/posts/${id}`, {
+
+        headers: {
+          'Authorization': `Bearer ${user}`
+        }
+
+      }).then((res) => {
+
+        // https://www.techiediaries.com/react-18-usestate-array/ 
+        // What I used for the setPostData function below since I want to use spread operator for the variable and props in this case
+
+        setPostData(res.data)
+        setPostId(res.data._id)
+        console.log(postData)
+
+      })
+
+      }
+      catch(error){
+        console.log(error)
+      }
+
+ }
 
 
+const handleEdit = (id) => {
+
+  getPost(id)
+  console.log('This is the post ID saved from the click' + '' + postId)
+  navigate(`/posts/edit/${id}`)
+  
+} 
 
 
-
-  return <div>
+  return <div className='mb-16'>
 
   <div className='flex w-2/3 mx-auto gap-4'>
   <h1 className='text-3xl font-bold'>Posts: ({postNumber})</h1>
@@ -93,9 +122,8 @@ const Admin = () => {
 
     <div className='flex-1'>
     <h2 className="card-title">{post.title}</h2>
-    
     <div className='flex justify-end mt-6 gap-4'>
-      <EditPostModal onClick={() => handleEdit(post._id)}/>
+      <button class="btn btn-warning hover:bg-orange-400" onClick={() => handleEdit(post._id)}>Edit</button>
       <button class="btn btn-error hover:bg-red-500" onClick={() => handleDelete(post._id)}>Delete</button>
 
     </div>

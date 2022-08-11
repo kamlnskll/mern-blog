@@ -1,15 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const Post = () => {
-  let { id } = useParams()
+
+  let {id} = useParams()
+
+  const { user } = useAuthContext()
 
   const [postData, setPostData] = useState('')
 
-  async function getPost(id) {
+  async function getPost(postId) {
     await axios
-      .get(`http://localhost:8080/api/posts/${id}`)
+      .get(`http://localhost:8080/api/posts/${postId}`, {
+        headers: {
+          'Authorization': `Bearer ${user}`
+        }
+      })
       .then((res) => {
         console.log(res.data)
         setPostData(res.data)
@@ -20,8 +28,7 @@ const Post = () => {
   }
 
   useEffect(() => {
-    getPost(id)
-    console.log(id)
+   getPost(id)
   }, [])
 
   return (

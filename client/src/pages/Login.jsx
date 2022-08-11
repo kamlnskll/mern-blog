@@ -21,7 +21,6 @@ const navigate = useNavigate()
       .then(function (response) {
         console.log(response)
         const token = response.data.token
-        console.log(token)
           // Save user json data to localStorage
           localStorage.setItem('token', JSON.stringify(token))
 
@@ -39,7 +38,7 @@ const navigate = useNavigate()
   }
 
   return (
-    <div className='mx-auto w-1/3'>
+    <div className='mx-auto w-1/3 mb-24'>
       <div class='form-control'>
         <label class='label'>
           <span class='label-text'>Email Address</span>

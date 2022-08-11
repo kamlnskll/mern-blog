@@ -22,7 +22,7 @@ router.get('/:id', getPostById)
 
 router.post('/', createPost)
 
-router.put('/:id', updatePost)
+router.put('/edit/:id', updatePost)
 
 router.delete('/:id', deletePost)
 

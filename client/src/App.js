@@ -16,6 +16,7 @@ import Footer from './components/Footer'
 import Admin from './pages/Admin'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import EditPost from './pages/EditPost'
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
         <Route path='/admin' element={<Admin />} />
         <Route path='/login' element={!user ? <Login /> : <Navigate to="/" />} />
         <Route path='/register' element={!user ? <Register /> : <Navigate to="/" />} />
+        <Route path='/posts/edit/:id' element={user ? <EditPost id={id}/> : <Navigate to ="/login" />}/>
       </Routes>
       <Footer />
     </BrowserRouter>
