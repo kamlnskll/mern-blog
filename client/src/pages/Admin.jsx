@@ -59,7 +59,13 @@ const Admin = () => {
         await axios.delete(`http://localhost:8080/api/posts/${id}`, {
             headers: {
               'Authorization': `Bearer ${user}`,
-            }}, ).then((res) => console.log(res))
+            }}, ).then((res) => {
+              console.log(res)
+              if (res.status = '200'){
+                window.alert('Post successfully deleted')
+              } else{
+              window.alert('Unable to delete the post!')}
+            })
     // Fetch user function here so we can refetch posts after deletion
     
     } catch (error) {
@@ -122,7 +128,7 @@ const handleEdit = (id) => {
 
     <div className='flex-1'>
     <h2 className="card-title">{post.title}</h2>
-    <div className='flex justify-end mt-6 gap-4'>
+    <div className='flex justify-end my-6 gap-4'>
       <button class="btn btn-warning hover:bg-orange-400" onClick={() => handleEdit(post._id)}>Edit</button>
       <button class="btn btn-error hover:bg-red-500" onClick={() => handleDelete(post._id)}>Delete</button>
 

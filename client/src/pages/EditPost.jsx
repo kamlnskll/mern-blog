@@ -55,7 +55,7 @@ async function editPost(postId){
       window.alert('Post successfully edited!') 
       navigate('/admin')}
       else{
-        console.log('Could not edit post!')
+        window.alert('Could not edit post!')
       }
     })
   } catch(error){
@@ -72,21 +72,20 @@ console.log(error)
   return (
     <>
   
-    <div className='w-2/3 mx-auto border'>
-    <h1 className='flex justify-center my-4 text-2xl uppercase font-extrabold'>Edit Existing Post</h1>
-      <div className='w-full'>
-      <input className='pt-16 flex text-2xl font-semibold border w-full' value={img} onChange={(e) => setImg(e.target.value)}/>
-        <input className='pt-16 flex text-2xl font-semibold border w-full' value={title} onChange={(e) => setTitle(e.target.value)}/>
-        {/* <input className='pt-16 flex text-xl font-semibold border w-full' value={postData.shortDesc}/> */}
-        <textarea className='pt-16 h-96 text-lg flex border w-full' value={body} onChange={(e) => setBody(e.target.value)}></textarea>
+    <div className='w-2/3 mx-auto shadow-md'>
+    <h1 className='flex justify-center my-6 text-2xl uppercase font-extrabold'>Edit Existing Post</h1>
+      <div className='w-full p-6'>
+      <input className='pt-16 flex text-2xl font-semibold border w-full rounded-xl text-justify' value={img} onChange={(e) => setImg(e.target.value)}/>
+        <input className='pt-16 my-4 flex text-2xl font-semibold border w-full rounded-xl text-justify' value={title} onChange={(e) => setTitle(e.target.value)}/>
+        <textarea className='pt-16 h-96 text-lg flex border w-full rounded-xl text-justify' value={body} onChange={(e) => setBody(e.target.value)}></textarea>
         <h2 className='pt-12 flex text-sm font-semibold justify-center'>
           Written by: "AUTHOR NAME HERE EVENTUALLY"
         </h2>
 
       </div>
-      <div className='flex justify-center gap-6 my-16'>
-      <button className='btn btn-primary' onClick={() => editPost(id)}>Save Changes</button>
-        <button className='btn btn-warning'>Discard Changes</button>
+      <div className='flex justify-center gap-6 shadow-md my-4'>
+      <button className='btn btn-primary mb-12' onClick={() => editPost(id)}>Save Changes</button>
+        <button className='btn btn-warning mb-12' onClick={() => navigate('/admin')}>Discard Changes</button>
       </div>
     </div>
     </>
