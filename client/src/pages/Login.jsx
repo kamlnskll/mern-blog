@@ -12,7 +12,7 @@ const navigate = useNavigate()
   const [password, setPassword] = useState('')
   const {dispatch} = useAuthContext()
 
-  const handleLogin = (e) => {
+  const handleLogin = () => {
     axios
       .post(`http://localhost:8080/api/users/login`, {
         email: email,
@@ -21,8 +21,11 @@ const navigate = useNavigate()
       .then(function (response) {
         console.log(response)
         const token = response.data.token
+        const isAdmin = response.data.isAdmin
           // Save user json data to localStorage
+  
           localStorage.setItem('token', JSON.stringify(token))
+          localStorage.setItem('isAdmin', JSON.stringify(isAdmin))
 
           // Update AuthContext
 

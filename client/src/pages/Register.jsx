@@ -33,10 +33,9 @@ const handleRegister = async () => {
       .then(function (response) {
         console.log(response)
         const token = response.data.token
-        const admin = response.data.isAdmin
-        console.log(token, admin)
           // Save user json data to localStorage
           localStorage.setItem('token', JSON.stringify(token))
+          localStorage.setItem('isAdmin', JSON.stringify(isAdmin))
 
           // Navigate to home page on successful login
           navigate('/')

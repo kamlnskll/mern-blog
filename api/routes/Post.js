@@ -7,7 +7,7 @@ import {
   getPostById,
 } from '../controllers/post.js'
 
-import { requireAuth } from '../utils/authMiddleware.js'
+import { requireAdmin, requireAuth } from '../utils/authMiddleware.js'
 
 const router = express.Router()
 
@@ -20,10 +20,10 @@ router.get('/', getPosts)
 
 router.get('/:id', getPostById)
 
-router.post('/', createPost)
+router.post('/', requireAdmin, createPost)
 
-router.put('/edit/:id', updatePost)
+router.put('/edit/:id', requireAdmin, updatePost)
 
-router.delete('/:id', deletePost)
+router.delete('/:id', requireAdmin, deletePost)
 
 export default router

@@ -17,9 +17,17 @@ import Admin from './pages/Admin'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import EditPost from './pages/EditPost'
+import { useState } from 'react'
 
 function App() {
 
+  // const [isAdmin, setIsAdmin] = useState(false)
+  // const admin = localStorage.getItem('isAdmin')
+  // if(admin === null || admin === 'false'){
+  //   console.log('You are not admin')
+  // } else {
+  //   setIsAdmin(true)
+  // }
   const { user } = useAuthContext()
   const { id } = useParams()
   return (

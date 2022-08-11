@@ -5,7 +5,9 @@ import { useState, useEffect } from 'react'
 import { useAuthContext } from '../hooks/useAuthContext'
 
 const Navbar = () => {
-  const [user, setUser] = useState(null)
+
+
+  const isAdmin = localStorage.getItem('isAdmin')
 
   const isUser = useAuthContext()
  
@@ -46,6 +48,11 @@ useEffect(() => {
         </div>
         <div className='flex'>
 
+        {isAdmin === 'true' && ( <> <Link className='btn btn-warning normal-case text-xl' to={`/admin`}>
+              Admin
+            </Link> </> )}
+
+
             {!isUser.user && ( <> <Link className='btn btn-ghost normal-case text-xl' to={`/login`}>
               Login
             </Link>
@@ -57,9 +64,6 @@ useEffect(() => {
             </Link> </>)} 
             
 {isUser.user && ( <>
-  <Link className='btn btn-warning normal-case text-xl' to={`/admin`}>
-              Admin
-            </Link>
 
 <Link className='btn btn-ghost normal-case text-xl' to={`/`}>
             Home
