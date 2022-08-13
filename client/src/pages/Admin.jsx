@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import PostSearch from '../components/PostSearch'
+// import PostSearch from '../components/PostSearch'
 import CreatePostModal from '../components/CreatePostModal'
 import { useAuthContext } from '../hooks/useAuthContext'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 const Admin = () => {
@@ -16,7 +16,8 @@ const Admin = () => {
   body: '',
 
   })
-  const [posts, setPosts] = useState(null)
+  const [posts, setPosts] = useState([])
+  const [searchResults, setSearchResults] = useState([])
   const [postNumber, setPostNumber] = useState('')
   const navigate  = useNavigate()
 
@@ -25,7 +26,7 @@ const Admin = () => {
   
   useEffect(() => {
     if (user){
-    getPosts()}
+    getPosts().then(res => {setSearchResults(res)})}
   }, [user])
 
 
@@ -118,7 +119,7 @@ const handleEdit = (id) => {
   <CreatePostModal />
   </div>
 <div className='max-w-xl mx-auto'>
-  <PostSearch />
+  {/* <PostSearch posts={posts} setSearchResults={setSearchResults}/> */}
   </div>
   
   {posts && posts.map((post, index) => { return (<div className="hover:bg-gray-50 flex mt-6 card card-side bg-base-100 shadow-xl max-w-xl mx-auto h-48">

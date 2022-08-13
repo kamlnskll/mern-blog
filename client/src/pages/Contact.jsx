@@ -34,9 +34,9 @@ window.alert(Object.values(contactFormDetails))
   </div>
 
   <div className="form-control">
-    <div className='flex gap-4 mt-8'>
-    <input type="text" placeholder="Your first name" class="input input-bordered w-full max-w-xs" onChange={e => setFName(e.target.value)}/>
-    <input type="text" placeholder="Your last name" class="input input-bordered w-full max-w-xs" onChange={e => setLName(e.target.value)}/>
+    <div className='flex gap-4 mt-8 mx-auto w-full'>
+    <input type="text" placeholder="Your first name" class="input input-bordered w-full" onChange={e => setFName(e.target.value)}/>
+    <input type="text" placeholder="Your last name" class="input input-bordered w-full" onChange={e => setLName(e.target.value)}/>
     </div>
     <div>
     <input type="text" placeholder="Your email address" class="input input-bordered w-full mt-3" onChange={e => setEmail(e.target.value)}/>

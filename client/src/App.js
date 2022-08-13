@@ -30,6 +30,7 @@ function App() {
   // }
   const { user } = useAuthContext()
   const { id } = useParams()
+
   return (
     <BrowserRouter>
       <Navbar />

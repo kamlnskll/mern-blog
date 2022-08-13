@@ -42,33 +42,36 @@ const navigate = useNavigate()
 
   return (
     <div className='mx-auto w-1/3 mb-24'>
-      <div class='form-control'>
+      <div class='form-control my-4'>
         <label class='label'>
-          <span class='label-text'>Email Address</span>
+        <span class="block text-sm font-medium text-slate-700">Email</span>
+
         </label>
-        <label class='input-group input-group-vertical'>
-          <span>Email</span>
           <input
-            type='text'
+            type='email'
+            required
             placeholder='Enter your email'
-            class='input input-bordered'
+            class='input input-bordered peer nvalid:border-red-500 invalid:text-red-500
+            focus:invalid:border-red-500 focus:invalid:ring-red-500'
             onChange={(e) => setEmail(e.target.value)}
           />
-        </label>
+
+        
       </div>
       <div class='form-control'>
         <label class='label'>
-          <span class='label-text'>Password</span>
-        </label>
-        <label class='input-group input-group-vertical'>
-          <span>Password</span>
+        <span class="block text-sm font-medium text-slate-700">Password</span>       
+         </label>
           <input
             type='password'
-            class='input input-bordered'
+            required
+            class='input input-bordered peer nvalid:border-red-500 invalid:text-red-500
+            focus:invalid:border-red-500 focus:invalid:ring-red-500'
             placeholder='Enter your password'
             onChange={(e) => setPassword(e.target.value)}
           />
-        </label>
+         
+       
         <div className='mt-12 w-48 mx-auto flex gap-6'>
           <button
             class='btn btn-info font-bold hover:bg-blue-400'

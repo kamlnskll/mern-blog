@@ -23,8 +23,9 @@ const PostList = () => {
         }
       })
       .then((res) => {
-        console.log(res.data)
+        // console.log(res.data)
         setPosts(res.data)
+        console.log(posts)
       })
       .catch((err) => {
         console.log(err)
@@ -41,11 +42,11 @@ const PostList = () => {
               key={index}
             >
               <figure>
-                <img alt='Shoes' src={post.img} className='' />
+                <img alt='Shoes' src={post.img} className='max-h-36 object-fit' />
               </figure>
               <div className='card-body'>
-                <h2 className='card-title'>{post.title}</h2>
-                <p>{post.body}</p>
+                <h2 className='card-title mx-auto'>{post.title}</h2>
+                <p className='max-h-32 overflow-hidden text-justify mx-4 my-4 rounded-xl'>{post.body}</p>
                 <div className='card-actions justify-end'>
                   <Link to={`/posts/${post._id}`}>
                     <button className='btn btn-primary'>Read Article</button>
