@@ -10,7 +10,21 @@ setIsAdmin(!isAdmin)
 console.log(!isAdmin)
 }
 
+
+const emailValidation = () => {
+  const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9+-]+\.[a-z]{2,8}(.[a-z])/
+  if(regEx.test(email)){
+    window.alert('Email is valid')
+  } else if(!regEx.test(email)&& email !== ''){
+    window.alert('Email is not valid')
+  } else{
+    window.alert('')
+  }
+    
+  }
   
+
+
 const navigate = useNavigate()
 
   const [firstName, setFirstName] = useState('')
@@ -21,7 +35,7 @@ const navigate = useNavigate()
  
 
 const handleRegister = async () => {
-
+  emailValidation()
     await axios
       .post(`http://localhost:8080/api/users/register`, {
         firstName: firstName,
@@ -44,6 +58,7 @@ const handleRegister = async () => {
         console.log(error)
       })
   }
+
 
 
 
@@ -116,6 +131,9 @@ const handleRegister = async () => {
     <span class="label-text">Check this box to create an Admin user</span> 
     <input type="checkbox" value={isAdmin} onClick={() => handleClick()} class="checkbox" />
   </label>
+  <div className='text-center'>
+  <h1>Already a user? <span className="hover:font-bold cursor-pointer hover:text-blue-600" onClick={() => navigate('/login')}>Login here!</span></h1>
+  </div>
 </div>
             <div className='mt-12 w-48 mx-auto flex gap-6'>
               <button
