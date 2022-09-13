@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useAuthContext } from '../hooks/useAuthContext'
+import validator from 'validator'
 
 const Login = () => {
 
@@ -10,9 +11,12 @@ const navigate = useNavigate()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
   const {dispatch} = useAuthContext()
 
   const handleLogin = () => {
+
+    if(validator.isEmail(email)){
     axios
       .post(`http://localhost:8080/api/users/login`, {
         email: email,
@@ -38,7 +42,12 @@ const navigate = useNavigate()
       .catch(function (error) {
         console.log(error)
       })
-  }
+  } else{
+    setErrorMessage('Invalid email or password')
+    setTimeout(() => {
+      setErrorMessage('')
+    }, 3500)
+  }}
 
   return (
     <div className='mx-auto w-1/3 mb-24'>
@@ -51,7 +60,7 @@ const navigate = useNavigate()
             type='email'
             required
             placeholder='Enter your email'
-            class='input input-bordered peer nvalid:border-red-500 invalid:text-red-500
+            class='input input-bordered peer invalid:border-red-500 invalid:text-red-500
             focus:invalid:border-red-500 focus:invalid:ring-red-500'
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -71,7 +80,7 @@ const navigate = useNavigate()
             onChange={(e) => setPassword(e.target.value)}
           />
          
-       
+         <h1 className='mx-auto mt-6 text-red-600 text-sm font-semibold text-center'>{errorMessage}</h1>
         <div className='mt-12 w-48 mx-auto flex gap-6'>
           <button
             class='btn btn-info font-bold hover:bg-blue-400'
