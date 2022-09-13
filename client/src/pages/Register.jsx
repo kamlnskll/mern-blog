@@ -2,6 +2,7 @@ import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import validator from 'validator'
 
 const Register = () => {
 
@@ -32,9 +33,12 @@ const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isAdmin, setIsAdmin] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
  
 
 const handleRegister = async () => {
+
+  if(validator.isEmail(email)){
     await axios
       .post(`http://localhost:8080/api/users/register`, {
         firstName: firstName,
@@ -56,9 +60,14 @@ const handleRegister = async () => {
       .catch(function (error) {
         console.log(error)
       })
+  } else{
+setErrorMessage('Please enter a valid email address')
+setTimeout(() => {
+  setErrorMessage('')
+}, 3500)
   }
 
-
+}
 
 
   return (
@@ -66,7 +75,8 @@ const handleRegister = async () => {
       <div className='mx-auto w-1/3'>
         <div class='form-control'>
           <label class='input-group input-group-vertical'>
-            <span>Email</span>
+            <span>
+Email<h1 className='ml-4 text-red-600 text-sm font-semibold text-center'>{errorMessage}</h1></span>
             <input
               type='text'
               placeholder='Enter your email'
@@ -141,7 +151,7 @@ const handleRegister = async () => {
               >
                 Register
               </button>
-            </div>
+            </div>            
           </div>
         </div>
       </div>
