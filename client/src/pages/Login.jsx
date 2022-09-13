@@ -41,9 +41,13 @@ const navigate = useNavigate()
       })
       .catch(function (error) {
         console.log(error)
+        setErrorMessage('Invalid credentials')
+    setTimeout(() => {
+      setErrorMessage('')
+    }, 3500)
       })
   } else{
-    setErrorMessage('Invalid email or password')
+    setErrorMessage('Please enter a valid email address')
     setTimeout(() => {
       setErrorMessage('')
     }, 3500)

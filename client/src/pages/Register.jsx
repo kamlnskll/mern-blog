@@ -59,6 +59,10 @@ const handleRegister = async () => {
       })
       .catch(function (error) {
         console.log(error)
+        setErrorMessage('Please fill out all fields')
+    setTimeout(() => {
+      setErrorMessage('')
+    }, 3500)
       })
   } else{
 setErrorMessage('Please enter a valid email address')
