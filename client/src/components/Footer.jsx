@@ -1,12 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
 <footer class="footer footer-center p-10 bg-primary text-base-content rounded">
   <div class="grid grid-flow-col gap-4 text-white">
-    <a class="link link-hover">About us</a> 
-    <a class="link link-hover">Contact</a> 
-    <a class="link link-hover">Jobs</a> 
+    <Link class="link link-hover" to={`/about`}>About us</Link> 
+    <Link class="link link-hover" to={`/contact`}>Contact</Link> 
+    <a href="https://en.wikipedia.org/wiki/Steve_Jobs" target="_blank" class="link link-hover">Jobs</a> 
   </div> 
   <div>
     <div class="grid grid-flow-col gap-4">
