@@ -11,17 +11,17 @@ console.log(!isAdmin)
 }
 
 
-const emailValidation = () => {
-  const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9+-]+\.[a-z]{2,8}(.[a-z])/
-  if(regEx.test(email)){
-    window.alert('Email is valid')
-  } else if(!regEx.test(email)&& email !== ''){
-    window.alert('Email is not valid')
-  } else{
-    window.alert('')
-  }
+// const emailValidation = () => {
+//   const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9+-]+\.[a-z]{2,8}(.[a-z])/
+//   if(regEx.test(email)){
+//     window.alert('Email is valid')
+//   } else if(!regEx.test(email)&& email !== ''){
+//     window.alert('Email is not valid')
+//   } else{
+//     window.alert('')
+//   }
     
-  }
+//   }
   
 
 
@@ -35,7 +35,6 @@ const navigate = useNavigate()
  
 
 const handleRegister = async () => {
-  emailValidation()
     await axios
       .post(`http://localhost:8080/api/users/register`, {
         firstName: firstName,
