@@ -1,24 +1,17 @@
 import React from 'react'
 import { useState } from 'react'
+import validator from 'validator'
 
 const EmailCapture = () => {
   const [email, setEmail] = useState('')
 
-  const emailValidation = () => {
-    const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9+-]+\.[a-z]{2,8}(.[a-z])/
-    if(regEx.test(email)){
-      window.alert('Email is valid')
-    } else if(!regEx.test(email)&& email !== ''){
-      window.alert('Email is not valid')
-    } else{
-      window.alert('')
-    }
-      
-    }
-
-
+  // Email validation built into handle email submit
   const handleEmailSubmit = () => {
-    console.log(email)
+    if(validator.isEmail(email) && email !== ''){
+      console.log(email)
+    } else{
+      console.log('Please enter a valid email address.')
+    }
   }
 
 
