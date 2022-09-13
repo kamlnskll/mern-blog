@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import validator from 'validator'
 
 const Contact = () => {
 
@@ -7,7 +8,7 @@ const Contact = () => {
   const [lName, setLName] = useState('')
   const [email, setEmail] = useState('')
   const [body, setBody] = useState('')
-
+ 
 
   const submitValues = () => {
     
@@ -17,10 +18,12 @@ const contactFormDetails = {
   'Email': email,
   'Message Body': body,
 } 
-
+if(validator.isEmail(email)){
 console.log(contactFormDetails)
 window.alert(Object.values(contactFormDetails))
-
+} else{
+window.alert('Please fill out all fields correctly')
+}
   }
 
   return <div>
