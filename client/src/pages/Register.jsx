@@ -76,7 +76,7 @@ setTimeout(() => {
 
   return (
     <div>
-      <div className='mx-auto w-1/3'>
+      <div className='mx-auto min-w-max max-w-lg'>
         <div class='form-control'>
           <label class='input-group input-group-vertical'>
             <span>
@@ -140,17 +140,17 @@ Email<h1 className='ml-4 text-red-600 text-sm font-semibold text-center'>{errorM
             </label>
 
             <div class="form-control">
-  <label class="label cursor-pointer">
+  <label class="label cursor-pointer mx-auto gap-4 mt-4">
     <span class="label-text">Check this box to create an Admin user</span> 
     <input type="checkbox" value={isAdmin} onClick={() => handleClick()} class="checkbox" />
   </label>
   <div className='text-center'>
-  <h1>Already a user? <span className="hover:font-bold cursor-pointer hover:text-blue-600" onClick={() => navigate('/login')}>Login here!</span></h1>
+  <h1 className='font-semibold'>Already a user? <span className="hover:font-bold cursor-pointer hover:text-blue-600" onClick={() => navigate('/login')}>Login here!</span></h1>
   </div>
 </div>
             <div className='mt-12 w-48 mx-auto flex gap-6'>
               <button
-                class='btn btn-warning font-bold hover:bg-orange-400'
+                className='btn btn-warning font-bold hover:bg-orange-400 mx-auto mb-12'
                 onClick={handleRegister}
               >
                 Register

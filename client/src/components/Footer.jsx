@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
-<footer class="footer footer-center p-10 bg-primary text-base-content rounded">
+<footer class="footer footer-center p-12 bg-primary text-base-content rounded">
   <div class="grid grid-flow-col gap-4 text-white">
     <Link class="link link-hover" to={`/about`}>About us</Link> 
     <Link class="link link-hover" to={`/contact`}>Contact</Link> 
@@ -20,6 +20,7 @@ const Footer = () => {
     <p>Copyright © 2022 - All right reserved by Michael K. LLC</p>
   </div>
 </footer>
+
   )
 }
 

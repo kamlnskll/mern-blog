@@ -33,7 +33,7 @@ const PostList = () => {
   }
 
   return (
-    <div className='grid grid-rows-1 sm:grid-flow-col justify-between sm:overflow-scroll mx-6'>
+    <div className='grid grid-rows-1 sm:grid-flow-col sm:my-6 justify-between sm:overflow-scroll mx-8 sm:gap-8'>
       {posts &&
         posts.map((post, index) => {
           return (

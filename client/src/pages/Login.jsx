@@ -54,7 +54,7 @@ const navigate = useNavigate()
   }}
 
   return (
-    <div className='mx-auto w-1/3 mb-24'>
+    <div className='mx-auto min-w-max max-w-lg mb-24'>
       <div class='form-control my-4'>
         <label class='label'>
         <span class="block text-sm font-medium text-slate-700">Email</span>
@@ -64,8 +64,7 @@ const navigate = useNavigate()
             type='email'
             required
             placeholder='Enter your email'
-            class='input input-bordered peer invalid:border-red-500 invalid:text-red-500
-            focus:invalid:border-red-500 focus:invalid:ring-red-500'
+            class='input input-bordered peer focus:invalid:ring-red-500'
             onChange={(e) => setEmail(e.target.value)}
           />
 
@@ -78,8 +77,7 @@ const navigate = useNavigate()
           <input
             type='password'
             required
-            class='input input-bordered peer nvalid:border-red-500 invalid:text-red-500
-            focus:invalid:border-red-500 focus:invalid:ring-red-500'
+            class='input input-bordered peer'
             placeholder='Enter your password'
             onChange={(e) => setPassword(e.target.value)}
           />
