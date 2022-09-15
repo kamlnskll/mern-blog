@@ -3,7 +3,6 @@ import React from 'react'
 import PostList from '../components/PostList'
 import EmailCapture from '../components/EmailCapture'
 import Hero from '../components/Hero'
-import reactSketch from '../'
 
 const Home = () => {
   return (

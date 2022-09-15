@@ -1,8 +1,9 @@
 
 import { Link } from 'react-router-dom'
 import { useLogout } from '../hooks/useLogout'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useAuthContext } from '../hooks/useAuthContext'
+import mockLogo from '../logo.png'
 
 const Navbar = () => {
 
@@ -44,7 +45,7 @@ useEffect(() => {
     <div>
       <div class='navbar bg-primary text-primary-content flex justify-between p-6 mb-24'>
         <div className='flex'>
-          <h1 className='text-3xl font-bold'>Bloggers</h1>
+          <img src={mockLogo} className='h-10 cursor-pointer'/>
         </div>
         <div className='flex'>
 
