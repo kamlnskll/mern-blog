@@ -1,16 +1,57 @@
-# mern-blog
+# Fullstack Blog App
 
-UPDATE: All the features that I set out to implement in this project are DONE! Will continue to add final touches over the next week or two but I am very happy with how it all turned out - because at times I wanted to rip my hair out working on this thing!
+## Project Description
 
-This project is built using the MERN stack as well as TailwindCSS and DaisyUI and is the first project that I've done without a step-by-step video tutorial.
+This is the first full stack application that I built from scratch without following a tutorial over the summer of 2022. It is a relatively simple blog that features a login page and CRUD functionality available to admin users that allow them to edit, delete and create posts, and all users can read them.
 
-The blog at the time of this README creation includes CRUD functionality for Posts, lists of posts on a homepage, as well as individual post pages; in summary it has basic functionality but still needs lots of polish.
+### Technologies used
 
-Initially PLANNED FEATURES:
+#### Frontend
 
--Create footer and static pages (about, contact, etc) with respective forms that connect to MongoDB.
--Create a mock logo and add it to project, improve the UI for mobile and incorporate best practices (vague because I'm not quite sure what they are yet)
--Add user and superuser feature with backend admin page for all CRUD stuff.
--Add login + registration feature
+* React
+* TailwindCSS
+* Axios
 
-I'm not sure how long this will take to implement, but hopefully no longer than a couple months if I stay consistent.
+#### Backend
+
+* Express.js
+* Node.js
+* MongoDB (Mongoose)
+
+## Project Goals
+
+The goal of this project for me was to breakout of the so-called "Tutorial Hell" and create my first full stack app without following a tutorial of any kind, which I had been until this point. This project was extremely difficult for me because I learned so much including how to implement CRUD functionality, how to effectively communicate with a backend and frontend using APIs and how to create a user auth system. There were many times that I had become stuck for days, sometimes weeks, on some of the features here.
+
+## Features
+
+* Multipage blog application with responsive design
+* Login and register system with the ability to create an admin at registration
+* Conditionally rendered navbar that changed depending on if user was admin or not
+* Admin panel accessible from navbar with full CRUD functionality for Admin users only
+# Ability to click on and view posts dynamically in a blog format
+
+## Setup
+
+To setup, you need a MongoDB account and to fill out your details in the .env file. Furthermore, the server and client are seperated in two different folders so you will need to run two terminals for each one.
+
+### Starting the backend
+
+`cd api`
+
+then
+
+`nodemon app.js`
+
+### Starting the frontend
+
+`cd client`
+
+then
+
+`npm start`
+
+## Project Status
+
+This project is done and I have moved onto other, more challenging projects. To be honest, this is not extremely polished because this was my first "real" project, but it is functional with the features I listed above. There will be some bugs in this.
+
+Thank you for checking out this project!
